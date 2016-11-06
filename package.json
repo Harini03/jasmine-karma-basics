@@ -1,0 +1,19 @@
+{
+  "name": "jasmine-karma-basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harini",
+  "license": "ISC",
+  "devDependencies": {
+    "jasmine-core": "^2.5.2",
+    "karma": "^1.3.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-htmlfile-reporter": "^0.3.4",
+    "karma-jasmine": "^1.0.2"
+  }
+}
