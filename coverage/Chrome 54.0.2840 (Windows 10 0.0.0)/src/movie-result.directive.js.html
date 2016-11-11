@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for src\service.js</title>
+    <title>Code coverage report for src\movie-result.directive.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -16,13 +16,13 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../index.html">all files</a> / <a href="index.html">src/</a> service.js
+      <a href="../index.html">all files</a> / <a href="index.html">src/</a> movie-result.directive.js
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>14/14</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -32,12 +32,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>6/6</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>14/14</span>
+        <span class='fraction'>3/3</span>
       </div>
     </div>
   </div>
@@ -67,60 +67,54 @@
 22
 23
 24
-25
-26
-27</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+25</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-yes">2×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3×</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">angular.module('omdb', [])
-	.factory('omdbApi', function($http, $q) {
-		var service = {};
-		var baseUrl = 'http://www.omdbapi.com/?v=1&amp;';
-&nbsp;
-		function httpPromise (url) {
-			var deferred = $q.defer();
-			$http.get(url)
-				.success(function(data) {
-					deferred.resolve(data);
-				})
-				.error(function() {
-					deferred.reject();
-				});
-			return deferred.promise;
-		}
-&nbsp;
-		service.search = function(query) {
-			return httpPromise(baseUrl + 's=' + encodeURIComponent(query));
-		}
-&nbsp;
-		service.find = function(id) {
-			return httpPromise(baseUrl + 'i=' + id);
-		}
-&nbsp;
-		return service;
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var app=angular.module('movieApp1',[]);
+	app.directive('movieResult', function() {
+		return {
+			restrict: 'E',
+			replace: true,
+			scope: {
+                result: '=result'
+            },
+            template: [
+            '&lt;div class="row"&gt;',
+                '&lt;div class="col-sm-4"&gt;',
+                    '&lt;img ng-src="{{result.Poster}}" alt="{{result.Title}}" width="220"&gt;',
+                '&lt;/div&gt;',
+                '&lt;div class="col-sm-8"&gt;',
+                    '&lt;h3&gt;{{result.Title}}&lt;/h3&gt;',
+                    '&lt;p&gt;{{result.Plot}}&lt;/p&gt;',
+                    '&lt;p&gt;&lt;strong&gt;Director:&lt;/strong&gt; {{result.Director}}&lt;/p&gt;',
+                    '&lt;p&gt;&lt;strong&gt;Actors:&lt;/strong&gt; {{result.Actors}}&lt;/p&gt;',
+                    '&lt;p&gt;&lt;strong&gt;Released:&lt;/strong&gt; {{result.Released}}&lt;/p&gt;',
+                    '&lt;p&gt;&lt;strong&gt;Genre:&lt;/strong&gt; {{result.Genre}}&lt;/p&gt;',
+                '&lt;/div&gt;',
+            '&lt;/div&gt;'
+            ].join('')
+		};
 	});</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
